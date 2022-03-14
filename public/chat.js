@@ -1,4 +1,4 @@
-const socket = io.connect('https://secure-chat-neon.vercel.app/')
+const socket = io.connect('http://localhost:5000')
 
 const sender = document.getElementById('sender')
 const message = document.getElementById('message')
