@@ -28,7 +28,7 @@ h2{
     padding: 12px;
 }
 #output p:nth-child(even){
-    background-color: #858585;
+    background-color: #e4e4e4;
 }
 
 #feedback p{
