@@ -5,13 +5,21 @@ const message = document.getElementById('message')
 const submitBtn = document.getElementById('submitBtn')
 const output = document.getElementById('output')
 const feedback = document.getElementById('feedback')
+var SenderName;
+
+Registerbtn.addEventListener('click', () => {
+    SenderName = document.getElementById('sender')
+    })
+
 
 submitBtn.addEventListener('click', () => {
 socket.emit('chat', {
     message: message.value,
-    sender: sender.value
+    sender: SenderName
  })
 })
+
+console.log(message.value);
 
 socket.on('chat', data => {
     output.innerHTML +='<p><strong>' + data.sender + ' : </strong>' + data.message + '</p>'
