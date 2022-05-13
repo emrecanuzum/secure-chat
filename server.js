@@ -42,7 +42,9 @@ io.on('connection', (socket) =>{
     socket.on('new-user', (room, name) => {
         socket.join(room)
         rooms[room].users[socket.id] = name
-        socket.to(room).emit('user-connected', {name: rooms[room].users[socket.id]})
+        getUserRooms(socket).forEach(room => {
+            socket.to(room).emit('user-connected', rooms[room].users[socket.id])
+        })
     })
 
     socket.on('send-chat-message', (room, message) =>
@@ -54,7 +56,7 @@ io.on('connection', (socket) =>{
     socket.on('disconnect', () =>
     {
         getUserRooms(socket).forEach(room => {
-            socket.to(room).broadcast.emit('user-disconnected', rooms[room].users[socket.id])
+            socket.to(room).emit('user-disconnected', rooms[room].users[socket.id])
             delete rooms[room].users[socket.id]
         })
     })
@@ -65,4 +67,8 @@ io.on('connection', (socket) =>{
             return names
         }, []) //objeyi arraye çeviriyor ki methodda kullanalım diye.
     }
+
+    socket.on('chat', data => {
+        io.sockets.emit('chat',data)
+    })
 })
