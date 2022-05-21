@@ -393,17 +393,4 @@ function AES_128_Decryption(本文,鍵){
     return plainstring(plain)
 }
 
-//let message = "僕の名前は「リチュルドトマス」申します。、オクスフォルド大学の学生です";
-//message = hexconvert(message);
-let 鍵 = KeyExpansion("5468617473206D79204B756E67204675")
-let encrypted = '',decrypted = ''
-
-for (let index = 0; index < array.length; index++) {
-    
-    
-}
-encrypted = AES_128_Encryption("54776F204F6E65204E696E652054776F",鍵);
-//encrypted = AES_128_Encryption(message.substring(0,32),鍵);
-decrypted = AES_128_Decryption(encrypted,鍵);
-
-console.log(decrypted);
+const genRanHex = size => [...Array(size)].map(() => Math.floor(Math.random() * 16).toString(16)).join('');
