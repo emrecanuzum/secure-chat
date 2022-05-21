@@ -1,8 +1,4 @@
-const { generateKey } = require("crypto");
-var crypto = require("crypto");
-const prompt = require('prompt-sync')();
-var process = require('node:process');
-let count = 0;
+
 const rev_sbox = [
     0x52, 0x09, 0x6a, 0xd5, 0x30, 0x36, 0xa5, 0x38, 0xbf, 0x40, 0xa3, 0x9e, 0x81, 0xf3, 0xd7, 0xfb,
     0x7c, 0xe3, 0x39, 0x82, 0x9b, 0x2f, 0xff, 0x87, 0x34, 0x8e, 0x43, 0x44, 0xc4, 0xde, 0xe9, 0xcb,
@@ -201,7 +197,7 @@ let inverse_row = function(Array) {
 }
 function KeyExpansion(鍵){
     var key = new Array(4);
-
+    let count = 0;
     
     for (var i = 0; i < 4; i++) {
         key[i] = new Array(4);
@@ -247,7 +243,7 @@ function AES_128_Encryption(本文,鍵) {
     for (var i = 0; i < 4; i++) {
         plain[i] = new Array(4);
     }
-    
+    let count = 0;
     for (let i = 0; i < 4; i++) {
         for (let y = 0; y < 4; y++) {
             plain[i][y] = parseInt(本文.substring(count,count+2),16);
@@ -320,7 +316,7 @@ function AES_128_Encryption(本文,鍵) {
 }
 
 function AES_128_Decryption(本文,鍵){
-
+    let count = 0;
     var plain = new Array(4);
     for (var i = 0; i < 4; i++) {
         plain[i] = new Array(4);
