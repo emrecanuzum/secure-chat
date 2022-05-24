@@ -400,11 +400,9 @@ function AES_128_Encryption(本文,鍵) {
     return plainstring(plain);
 
 }
-
-
 const genRanHex = size => [...Array(size)].map(() => Math.floor(Math.random() * 16).toString(16)).join('');
-
 /************************************************************************************************* */
+
 if (messageForm != null) {
     const name = prompt('what is your name?')
     appendMessage('You joined')
@@ -436,7 +434,7 @@ if (messageForm != null) {
                 hex += '00'
             }
         }
-        console.log("hex: " + hex)
+        console.log("message: " + message)
         let encrypted = ''
         let loop = parseInt(hex.length / 32);
         console.log(loop)
@@ -488,7 +486,6 @@ socket.on('user-disconnected', name => {
 })
 
 socket.on('chat', data => {
-    console.log(data)
     output.innerHTML +='<p><strong>' + data.sender + ' : </strong>' + data.message + '</p>'
 })
 
